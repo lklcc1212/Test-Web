@@ -235,7 +235,7 @@
 
 /* ----------- 风格灵感info ----------*/
 .styleInfo {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   z-index: 15;
   font-family: Arial, Helvetica, sans-serif;
