@@ -1,0 +1,1229 @@
+<!-- 语义元素(elemento semantico)是一个具有特定含义并能清楚、准确地描述其目的的实体。例如，<aside>、<header>、<section>、... -->
+<!DOCTYPE html>
+<html lang="zh-CN" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AnimLink文档</title>
+    <link rel="stylesheet" href="styles/common-styles.css" id="common-styles" />
+    <link rel="stylesheet" href="styles/styles1.css" id="style" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=compare_arrows"
+    />
+    <link
+      rel="icon"
+      href="https://media.istockphoto.com/id/1302329383/vector/two-chain-links-icon-attach-lock-symbol.jpg?s=612x612&w=0&k=20&c=c-dxZOv-E63rdJJ40lKPbO2wbb9y9jJpZ-s10ArX2l8="
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="prevent-select">
+    <!-- <div>是无意义的容器(“generic”) -->
+    <div id="layout">
+      <!-- 侧边栏 -->
+      <!-- <aside> 是包含相对于主要内容而言边缘或次要内容的元素。 -->
+      <aside id="sidebar">
+        <div class="zh-CN">
+          <h2>目录</h2>
+          <!-- <hr> 分割线 -->
+          <hr />
+          <ul>
+            <li><a href="#intro" title="简介">简介</a></li>
+            <li><a href="#getting-started" title="快速上手">快速上手</a></li>
+            <li>
+              <a href="#visualization-panel" title="可视化面板使用说明"
+                >可视化面板使用说明</a
+              >
+            </li>
+            <li><hr /></li>
+            <li><a href="#API-doc" title="API 文档">API 文档</a></li>
+            <li><hr /></li>
+          </ul>
+        </div>
+        <div class="it">
+          <h2>Indice</h2>
+          <hr />
+          <ul>
+            <li>
+              <a href="#intro" title="Introduzione">Introduzione</a>
+            </li>
+            <li>
+              <a href="#getting-started" title="Inizio veloce">Inizio veloce</a>
+            </li>
+            <li>
+              <a
+                href="#visualization-panel"
+                title="Istruzioni per l'uso del pannello di visualizzazione"
+                >Istruzioni per l'uso del pannello di visualizzazione</a
+              >
+            </li>
+            <li><hr /></li>
+            <li>
+              <a href="#API-doc" title="Documentazione API"
+                >Documentazione API</a
+              >
+            </li>
+            <li><hr /></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- 可删除 -->
+      <pre><p class="zh-CN styleInfo">风格灵感来自: <a href="https://schema-render.js.org/core-react/001-intro">Link</a></p></pre>
+      <pre><p class="it styleInfo">Stile ispirato a: <a href="https://schema-render.js.org/core-react/001-intro">Link</a></p></pre>
+      <!---->
+
+      <!-- 主体区域 -->
+      <!-- <main> 是一个语义元素，代表文档的主要内容。 -->
+      <main id="main">
+        <!-- 顶部栏 -->
+        <!-- <header> 是一个语义元素，用于表示页面或某个区块的头部内容 -->
+        <header id="header">
+          <div class="logo">
+            <img
+              src="https://media.istockphoto.com/id/1302329383/vector/two-chain-links-icon-attach-lock-symbol.jpg?s=612x612&w=0&k=20&c=c-dxZOv-E63rdJJ40lKPbO2wbb9y9jJpZ-s10ArX2l8="
+            />
+            AnimLink
+          </div>
+          <div id="right-header">
+            <div class="tooltip-wrapper">
+              <span class="material-symbols-outlined" id="change-style-img">
+                compare_arrows
+              </span>
+              <span class="tooltip"
+                ><p class="zh-CN">切换风格</p>
+                <p class="it">Cambia stile</p></span
+              >
+            </div>
+            <div class="tooltip-wrapper">
+              <div id="theme-toggle">☀️</div>
+              <span class="tooltip"
+                ><p class="zh-CN">切换主题</p>
+                <p class="it">Cambia tema</p></span
+              >
+            </div>
+            <div class="tooltip-wrapper">
+              <img id="lang-toggle" src="images/china.png" />
+              <span class="tooltip"
+                ><p class="zh-CN">切换语言</p>
+                <p class="it">Cambia lingua</p></span
+              >
+            </div>
+          </div>
+        </header>
+
+        <!-- 菜单按钮(当视窗小于或等于800px) -->
+        <div id="showSidebarDiv">
+          <span id="showSidebarBtn">
+            <p class="zh-CN">☰ 侧边菜单</p>
+            <p class="it">☰ Menù laterale</p></span
+          >
+          <div id="translucentScreen"></div>
+        </div>
+
+        <!-- 内容区域 -->
+        <!-- <article> 是一个元素，表示一个独立且可重复使用的内容。 -->
+        <article id="contents">
+          <!-- <section> 是一个语义元素，用来把内容按不同主题或话题进行细分，通常包含标题。 -->
+          <section id="intro">
+            <h1 class="it">Introduzione</h1>
+            <h1 class="zh-CN">简介</h1>
+            <p class="zh-CN">
+              <code>AnimLink</code> 是一款轻量级 Unity
+              动画插件，提供了直观简洁的扩展方法来执行常见的属性动画。它支持对
+              <code>Transform</code> 的位移、旋转、缩放，以及对 UI
+              或渲染组件的透明度、颜色等属性进行缓动操作。使用
+              <code>AnimLink</code>
+              无需复杂配置，只需在脚本中调用相应的扩展方法（如
+              <code>DoPosition</code
+              >、<code>DoScale</code>、<code>DoAlpha</code>等），即可实现平滑动画效果。<code
+                >AnimLink</code
+              >
+              内置多种缓动类型(<code>Ease</code>)和动画循环方式，并支持将多个动画组合成序列执行。
+              另外，<code>AnimLink</code>
+              还附带了一些其他功能，如可视化面板，允许用户直观地创建和编辑动画序列。
+              <br />
+              <strong
+                >本插件特点：协程驱动、简洁易用、高可定制、轻量级。</strong
+              >
+            </p>
+            <p class="it">
+              <code>AnimLink</code> è un plugin di animazione leggero per Unity
+              che offre metodi di estensione intuitivi e concisi per eseguire le
+              animazioni delle proprietà più comuni. Supporta il tweening di
+              spostamento, rotazione e ridimensionamento del
+              <code>Transform</code>, nonché la trasparenza, il colore e altre
+              proprietà degli elementi UI o dei componenti di rendering. Con
+              <code>AnimLink</code> non è necessaria alcuna configurazione
+              complessa: basta invocare nel codice i metodi di estensione
+              corrispondenti (ad esempio <code>DoPosition</code>,
+              <code>DoScale</code>, <code>DoAlpha</code> ecc.) per ottenere
+              animazioni fluide. <code>AnimLink</code> include diversi tipi di
+              easing (<code>Ease</code>) e modalità di loop, e supporta la
+              composizione di più animazioni in sequenza. Inoltre,
+              <code>AnimLink</code> include anche alcune funzionalità
+              aggiuntive, come un pannello visivo che consente agli utenti di
+              creare e modificare sequenze di animazione in modo intuitivo.
+              <br />
+              <strong
+                >Caratteristiche di questo plugin: basato su coroutine, semplice
+                e facile da usare, altamente personalizzabile e leggero.</strong
+              >
+            </p>
+            <hr />
+          </section>
+          <section id="getting-started">
+            <div class="zh-CN">
+              <h1>快速上手</h1>
+              <ol style="margin-left: 1rem">
+                <li>
+                  下载插件：<a href="AnimLink V.1.0.0.unitypackage" download
+                    >AnimLink V.1.0.0</a
+                  >
+                  <br />
+                  注：为了可以使用预览模式，请在
+                  <strong>Unity Package Manager</strong> 中搜索并安装
+                  <code>EditorCoroutine</code>。
+                </li>
+                <li>在Unity项目中导入 <code>AnimLink</code> 插件。</li>
+                <li>
+                  在需要使用动画的
+                  <b>GameObject</b> 上添加一个脚本，并编写如下代码：
+                  <br />
+                  <div class="code-panel">
+                    <pre>
+<code>using UnityEngine;
+using AnimLink; // 在脚本中使用 AnimLink 前，需要先引用 AnimLink 命名空间。
+public class HelloWorld : MonoBehaviour {
+  public CanvasGroup canvasGroup;
+  void Start() {
+    // 移动：将物体沿 X 轴移动到目标位置 3f, 持续 2 秒
+    transform.DoPosition(Axis.X, 3f, 2f, 1, Base_AnimType.None, Ease.Linear).Play();
+    // 缩放：将物体局部缩放到 (2,2,2)，持续 2 秒
+    transform.DoScale(new Vector3(2f, 2f, 2f), 2f, 1, Base_AnimType.None, Ease.Linear)
+                      .Play();
+    // 透明度：将 UI CanvasGroup 的透明度变为 0(完全透明), 持续 1 秒
+    canvasGroup.DoAlpha(0f, 1f, 1, ValueAnimType.None, Ease.Linear).Play();
+  }
+}</code></pre>
+                  </div>
+                </li>
+              </ol>
+              <p>
+                在以上示例中，<code>transform.DoPosition</code> 相当于对
+                <code>transform.position</code> 属性进行插值修改
+                ，从而使物体平滑移动； <code>transform.DoScale</code> 修改
+                <code>transform.localScale</code>;
+                <code>canvasGroup.DoAlpha</code> 则修改
+                <b>CanvasGroup</b>
+                的 <code>alpha</code> 属性 (<b>CanvasGroup</b>
+                常用于同时控制一组 UI 元素的透明度)
+                。通过这种方式，你可以很方便地在代码中为游戏对象添加动画效果。
+              </p>
+              <p>
+                ✅ <strong>提示：</strong> 想了解更多用法？看看
+                <code>AnimLink/RunTime/Examples</code> 文件夹中的示例吧！
+              </p>
+            </div>
+            <div class="it">
+              <h1>Inizio veloce</h1>
+              <ol style="margin-left: 1rem">
+                <li>
+                  Scarica il plugin:
+                  <a href="AnimLink V.1.0.0.unitypackage" download
+                    >AnimLink V.1.0.0</a
+                  >
+                  <br />
+                  Nota: per poter utilizzare la modalità anteprima, cerca e
+                  installa <code>EditorCoroutine</code> nel
+                  <strong>Unity Package Manager</strong>
+                </li>
+                <li>
+                  Importa il plugin <code>AnimLink</code> nel tuo progetto
+                  Unity.
+                </li>
+                <li>
+                  Aggiungi uno script al <b>GameObject</b> su cui vuoi applicare
+                  l'animazione e scrivi:
+                  <br />
+                  <div class="code-panel">
+                    <pre>
+<code >using UnityEngine;
+using AnimLink; // Prima di usare AnimLink nello script, è necessario importare il namespace AnimLink.
+public class HelloWorld : MonoBehaviour {
+  public CanvasGroup canvasGroup;
+  void Start() {
+    // Movimento: sposta l'oggetto lungo l'asse X fino alla posizione 3f, in 2 secondi
+    transform.DoPosition(Axis.X, 3f, 2f, 1, Base_AnimType.None, Ease.Linear).Play();
+    // Scala: scala l'oggetto localmente a (2,2,2), in 2 secondi
+    transform.DoScale(new Vector3(2f, 2f, 2f), 2f, 1, Base_AnimType.None, Ease.Linear)
+                      .Play();
+    // Trasparenza: cambia l'opacità del CanvasGroup UI a 0 (completamente trasparente), in 1 secondo
+    canvasGroup.DoAlpha(0f, 1f, 1, ValueAnimType.None, Ease.Linear).Play();
+  }
+}</code></pre>
+                  </div>
+                </li>
+              </ol>
+
+              <p>
+                Nell'esempio sopra, <code>transform.DoPosition</code> equivale a
+                modificare <code>transform.position</code> tramite
+                interpolazione, ottenendo così un movimento fluido;
+                <code>transform.DoScale</code> modifica
+                <code>transform.localScale</code>;
+                <code>canvasGroup.DoAlpha</code> invece modifica la proprietà
+                <code>alpha</code> di <b>CanvasGroup</b> (<b>CanvasGroup</b>
+                viene comunemente usato per controllare collettivamente
+                l'opacità di più elementi UI). In questo modo puoi facilmente
+                aggiungere animazioni agli oggetti direttamente dal codice.
+              </p>
+              <p>
+                ✅ <strong>Suggerimento:</strong> Vuoi saperne di più? Dai
+                un'occhiata agli esempi nella cartella
+                <code>AnimLink/RunTime/Examples</code>!
+              </p>
+            </div>
+            <hr />
+          </section>
+          <section id="visualization-panel">
+            <div class="zh-CN">
+              <h1>🎬 可视化面板使用说明</h1>
+              <p>
+                为了提升动画配置的效率与可视化体验，<strong
+                  ><code>AnimLink</code> 插件</strong
+                >
+                内置了一套自定义的 <strong>Editor 脚本系统</strong>，可在 Unity
+                的 Inspector 中直观编辑动画命令。
+                下方将展示可视化面板和操作流程，以及其它功能。
+              </p>
+              <h2>🔹AnimationCommandGroup 组件</h2>
+              <p>
+                <code>AnimationCommandGroup</code
+                >是<code>AnimLink</code>的核心组件之一，用于集中管理多个动画命令。
+                每条命令控制一个动画行为，如位置移动、透明度渐变、颜色变换等。对应的<code>AnimationCommandGroupPropertyDrawer</code>属性绘制器会在
+                <strong>Inspector</strong>
+                中以列表形式显示动画命令序列。
+                <br /><br />
+                在使用时，你只需将
+                <code>AnimationCommandGroup</code> 添加到场景对象上， 即可通过
+                <strong>Inspector</strong>
+                面板可视化地添加、编辑、删除每一条动画指令。
+                每条命令都允许设置动画类型(如
+                <code>DoPosition</code
+                >、<code>DoAlpha</code>)、目标值、持续时间、缓动方式、循环模式等参数,
+                并可点击播放按钮直接预览当前命令的动画效果。 <br /><br />
+                此外，每组动画命令可以统一设置播放方式，比如一起播放还是一个接一个地播放。
+                这样可以快速制作复杂的动画效果，不用写任何动画代码，大大提高开发效率。
+              </p>
+              <div class="video">
+                <h3>🎥 示例视频：添加、配置并使用动画命令组</h3>
+                <video
+                  controls
+                  preload="none"
+                  data-src="videos/add-config-use-commands.mp4"
+                ></video>
+              </div>
+              <h2>🔹AnimationCommand 组件</h2>
+              <p>
+                如果你只需要编辑一个动画效果，可以直接使用
+                <code>AnimationCommand</code> 组件，它用于表示单个动画命令。
+                每条命令都包含动画类型（如位置、缩放、透明度等）、目标值、持续时间、缓动方式、循环模式等参数。
+                它在 <strong>Inspector</strong> 面板中可以通过
+                <code>AnimationCommandPropertyDrawer</code>
+                自定义绘制器直观编辑， 允许你无需编写任何代码即可完成动画配置。
+              </p>
+              <div class="video">
+                <h3>🎥 示例视频: 使用AnimationCommand</h3>
+                <video
+                  controls
+                  preload="none"
+                  data-src="videos/use-single-command.mp4"
+                ></video>
+              </div>
+              <h2>🔹额外功能</h2>
+              <p>插件还内置了多个辅助功能，可用于提升编辑体验：</p>
+              <ul style="margin-left: 2rem">
+                <li>
+                  <code>HelpBoxAttribute</code>: 在<strong> Inspector</strong>
+                  中显示提示说明。
+                  <br />
+                  代码示例：
+                  <br />
+                  <img src="images/helpbox-code.png" />
+                  <br />
+                  效果示例：
+                  <br />
+                  <img src="images/helpbox-inspector.png" />
+                </li>
+                <li>
+                  <code>FunctionPlus</code>组件: 借鉴了
+                  <strong>UnityEvent</strong>
+                  在 <strong>Inspector</strong>
+                  中的表现形式和设计理念，但做出了更适合本插件的优化与增强，实现了更灵活的函数调用配置。
+                  <code>FunctionPlus</code> 支持多种类型的函数调用，包括：
+                  <code>int</code>、<code>float</code>、<code>string</code>、
+                  <code>List&lt;T&gt;</code>(T 为支持的基础类型)、
+                  <code>Vector3</code> 和 <code>Quaternion</code> 等。
+                  但需要注意的是，仅支持返回类型为 <code>void</code> 或
+                  <code>IEnumerator</code> 的函数。
+                  <div class="video">
+                    <h3>🎥 示例视频: FunctionPlus使用方法</h3>
+                    <video
+                      controls
+                      preload="none"
+                      data-src="videos/functionPlus.mp4"
+                    ></video>
+                  </div>
+                  <p>
+                    ✅ <strong>提示：</strong> <code>FunctionPlus</code>组件
+                    能在 <code>AnimationCommandGroup</code> 组件中使用，不能在
+                    <code>AnimationCommand</code> 组件中使用。
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="it">
+              <h1>🎬 Istruzioni per l'uso del Pannello Visuale</h1>
+              <p>
+                Per migliorare l'efficienza della configurazione delle
+                animazioni e l'esperienza visiva, il plugin
+                <strong><code>AnimLink</code></strong> include un sistema di
+                script personalizzati per l'Editor che permette di modificare i
+                comandi di animazione direttamente nell'Inspector di Unity. Di
+                seguito vengono mostrati il pannello visuale, il flusso
+                operativo e altre funzionalità.
+              </p>
+
+              <h2>🔹 Componente <code>AnimationCommandGroup</code></h2>
+              <p>
+                <code>AnimationCommandGroup</code> è uno dei componenti chiave
+                di <code>AnimLink</code>, utilizzato per gestire in modo
+                centralizzato più comandi di animazione. Ogni comando controlla
+                un comportamento animato (ad esempio spostamento, transizione di
+                opacità, cambio colore, ecc.). Il relativo
+                <code>AnimationCommandGroupPropertyDrawer</code> disegna
+                nell'<strong>Inspector</strong> una lista sequenziale di
+                comandi. <br /><br />
+                Per usarlo, basta aggiungere il componente
+                <code>AnimationCommandGroup</code> all'oggetto di scena:
+                nell'<strong>Inspector</strong> potrai aggiungere, modificare e
+                rimuovere visivamente ogni comando animazione. Ogni commando
+                consente di impostare il tipo di animazione (es.
+                <code>DoPosition</code>, <code>DoAlpha</code>), il valore
+                obiettivo, la durata, il tipo di easing, la modalità di loop e
+                altro, e di cliccare un pulsante di anteprima per vedere in
+                tempo reale l'effetto. <br /><br />
+                Inoltre, ogni gruppo di comandi di animazione può essere
+                configurato per essere riprodotto in modo simultaneo (cioè allo
+                stesso tempo) o sequenziale. In questo modo è possibile creare
+                rapidamente effetti animati complessi senza scrivere alcun
+                codice di animazione, migliorando notevolmente l'efficienza
+                dello sviluppo.
+              </p>
+
+              <div class="video">
+                <h3>
+                  🎥 Video di esempio: aggiunta, configurazione e utilizzo di un
+                  gruppo di comandi
+                </h3>
+                <video
+                  controls
+                  preload="none"
+                  data-src="videos/add-config-use-commands.mp4"
+                ></video>
+              </div>
+
+              <h2>🔹 Componente <code>AnimationCommand</code></h2>
+              <p>
+                Se ti serve un singolo effetto animato, puoi usare direttamente
+                il componente <code>AnimationCommand</code>, che rappresenta un
+                singolo comando. Ogni comando include tipo di animazione
+                (spostamento, scala, opacità, ecc.), valore obiettivo, durata,
+                easing, modalità di loop e altri parametri. Nel pannello
+                <strong>Inspector</strong> è disegnato tramite
+                <code>AnimationCommandPropertyDrawer</code> per un editing
+                intuitivo, permettendoti di configurare l'animazione senza
+                scrivere codice.
+              </p>
+
+              <div class="video">
+                <h3>🎥 Video di esempio: utilizzo di AnimationCommand</h3>
+                <video
+                  controls
+                  preload="none"
+                  data-src="videos/use-single-command.mp4"
+                ></video>
+              </div>
+
+              <h2>🔹 Funzionalità Aggiuntive</h2>
+              <p>
+                Il plugin include inoltre diversi strumenti ausiliari per
+                migliorare l'esperienza di editing:
+              </p>
+              <ul style="margin-left: 2rem">
+                <li>
+                  <code>HelpBoxAttribute</code>: mostra un messagio di
+                  suggerimento nell'<strong>Inspector</strong>.
+                  <br />
+                  Esempio di codice:
+                  <br />
+                  <img src="images/helpbox-code.png" />
+                  <br />
+                  Esempio di effetto:
+                  <br />
+                  <img src="images/helpbox-inspector.png" />
+                </li>
+                <li>
+                  Componente <code>FunctionPlus</code>: ispirato a
+                  <strong>UnityEvent</strong> nell'<strong>Inspector</strong>,
+                  ma ottimizzato per questo plugin, offre una configurazione più
+                  flessibile delle chiamate di funzione.
+                  <code>FunctionPlus</code> supporta diversi tipi di argomenti
+                  (tra cui <code>int</code>, <code>float</code>,
+                  <code>string</code>, <code>List&lt;T&gt;</code>,
+                  <code>Vector3</code>, <code>Quaternion</code>), ma solo metodi
+                  con ritorno <code>void</code> o <code>IEnumerator</code>.
+                  <div class="video">
+                    <h3>🎥 Video di esempio: utilizzo di FunctionPlus</h3>
+                    <video
+                      controls
+                      preload="none"
+                      data-src="videos/functionPlus.mp4"
+                    ></video>
+                  </div>
+                  <p>
+                    ✅ <strong>Suggerimento:</strong> il componente
+                    <code>FunctionPlus</code> può essere utilizzato all'interno
+                    di <code>AnimationCommandGroup</code> e non in
+                    <code>AnimationCommand</code>.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <hr />
+          </section>
+
+          <!-- table th(table header) 是表的表头。table tr(table row) 是表的一行。table td(table data)是表格元素 -->
+          <section id="API-doc">
+            <div class="zh-CN">
+              <h1>API 文档</h1>
+              <p><strong>命名空间：</strong><code>AnimLink</code></p>
+
+              <hr />
+
+              <h2>1. AnimationSequence</h2>
+              <p>管理并顺序执行一系列动画命令、延迟和回调。</p>
+
+              <h3>公共属性</h3>
+              <p>
+                <code>public List&lt;AnimationItem&gt; Items { get; }</code
+                >：当前添加的项目列表。
+              </p>
+
+              <h3>公共方法</h3>
+              <pre
+                class="code-panel"
+              ><code >public AnimationSequence Append(IAnimationCommand command, bool wait = true)
+public AnimationSequence Append(float delay, bool gameTime = true)
+public AnimationSequence Append(Action action)
+public AnimationSequence Append(FunctionPlus functionPlus, bool wait = false)
+
+public AnimationSequence Insert(int index, IAnimationCommand command, bool wait = true)
+public AnimationSequence Insert(int index, FunctionPlus functionPlus, bool wait = false)
+public AnimationSequence Insert(int index, float delay, bool gameTime = true)
+public AnimationSequence Insert(int index, Action action)
+
+public AnimationSequence RemoveAt(int index)
+public AnimationSequence Remove(IAnimationCommand command)
+public AnimationSequence Remove(FunctionPlus functionPlus)
+public AnimationSequence Remove(Action action)
+
+public AnimationSequence Clear()
+
+public void Play()
+public void Stop()</code></pre>
+              <p>
+                <strong>说明：</strong>Append/Insert 增加命令;
+                Remove/RemoveAt/Clear 删除；<code>Play()</code> 启动，<code
+                  >Stop()</code
+                >
+                停止。
+              </p>
+
+              <hr />
+
+              <h2>2. AnimLinkExtension(扩展方法)</h2>
+              <p>
+                为常用组件提供链式动画接口，返回对应
+                <code>IAnimationCommand</code> 实例，支持链式配置：
+              </p>
+
+              <div class="table-wrapper">
+                <table>
+                  <tr>
+                    <th>方法</th>
+                    <th>方法签名</th>
+                    <th>说明</th>
+                  </tr>
+                  <tr>
+                    <td>DoPath</td>
+                    <td>
+                      <pre><code
+                      >DoPath(this Transform t, Vector3[] path, float duration, int times, 
+      DoPath.AnimType animType, DoPath.PathType pathType, Ease ease, 
+      int samplesPerSegment=50)</code></pre>
+                    </td>
+                    <td>沿路径移动，支持线性/Catmull-Rom/Bezier。</td>
+                  </tr>
+                  <tr>
+                    <td>DoPosition (轴)</td>
+                    <td>
+                      <pre><code
+                      >DoPosition(this Transform t, Axis axis, float target, float duration, 
+          int times, DoPosition.AxisAnimType animType, Ease ease = Ease.Linear, 
+          Space space = Space.World)</code
+                    ></pre>
+                    </td>
+                    <td>在指定轴方向移动。</td>
+                  </tr>
+                  <tr>
+                    <td>DoPosition (向量)</td>
+                    <td>
+                      <pre><code
+                      >DoPosition(this Transform t, Vector3 position, float duration, 
+          int times, Base_AnimType animType, Ease ease = Ease.Linear, 
+          Space space = Space.World)</code></pre>
+                    </td>
+                    <td>移动到指定位置。</td>
+                  </tr>
+                  <tr>
+                    <td>DoScale (轴)</td>
+                    <td>
+                      <pre><code
+                      >DoScale(this Transform transform, Axis axis, float target, float duration, 
+        int times, Base_AnimType animType, Ease ease = Ease.Linear)</code
+                    ></pre>
+                    </td>
+                    <td>沿指定轴进行缩放。</td>
+                  </tr>
+                  <tr>
+                    <td>DoScale (向量)</td>
+                    <td>
+                      <pre><code
+                      >DoScale(this Transform transform, Vector3 localScale, float duration, 
+        int times, Base_AnimType animType, Ease ease = Ease.Linear)</code
+                    ></pre>
+                    </td>
+                    <td>按指定三维向量进行缩放。</td>
+                  </tr>
+                  <tr>
+                    <td>DoRotation</td>
+                    <td>
+                      <pre><code
+                      >DoRotation(this Transform t, Vector3 eulerAngles, float duration, int times,
+           Base_AnimType animType, Ease ease = Ease.Linear,
+           DoRotation.RotateMode rotateMode = RotateMode.Fast,
+           Space space = Space.World)</code
+                    ></pre>
+                    </td>
+                    <td>旋转动画。</td>
+                  </tr>
+                  <tr>
+                    <td>DoAlpha</td>
+                    <td>
+                      <pre><code
+                      >DoAlpha(this SpriteRenderer / CanvasGroup / Graphic / Material / MeshRenderer target,
+        float alpha, float duration, int times, ValueAnimType animType,
+        Ease ease = Ease.Linear[, int materialIndex])</code
+                    ></pre>
+                    </td>
+                    <td>透明度动画。</td>
+                  </tr>
+                  <tr>
+                    <td>DoColor</td>
+                    <td>
+                      <pre><code
+                      >DoColor(this SpriteRenderer/Graphic/Material/MeshRenderer target,
+        Color color, float duration, int times, ValueAnimType animType,
+        Ease ease = Ease.Linear, bool doAlpha = false[, int materialIndex])</code
+                    ></pre>
+                    </td>
+                    <td>颜色动画。</td>
+                  </tr>
+                  <tr>
+                    <td>ShakePosition / ShakeScale</td>
+                    <td>
+                      <pre><code
+                      >ShakePosition(this Transform t, Axis axis, float duration, float magnitude)</code
+                    ></pre>
+                    </td>
+                    <td>抖动动画（位置/缩放）。</td>
+                  </tr>
+                  <tr>
+                    <td>AdvancedShake</td>
+                    <td>
+                      <pre><code
+                      >AdvancedShake(this Transform t, float duration, Axis axes, float returnDuration,
+              AdvancedShake.AdvancedShakeType type)</code
+                    ></pre>
+                    </td>
+                    <td>高级抖动，支持噪声和曲线。</td>
+                  </tr>
+                  <tr>
+                    <td>EasedT</td>
+                    <td><code>float EasedT(float t, Ease ease)</code></td>
+                    <td>根据缓动类型计算进度。</td>
+                  </tr>
+                  <tr>
+                    <td>CatmullRom / CubicBezier</td>
+                    <td>
+                      <pre><code
+                        >Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+Vector3 CubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)</code
+                      ></pre>
+                    </td>
+                    <td>路径插值算法。</td>
+                  </tr>
+                </table>
+              </div>
+
+              <hr />
+
+              <h2>3. MaterialPropertyBlockExtension</h2>
+              <p>扩展 <code>MaterialPropertyBlock</code>，支持批量清除属性：</p>
+              <pre
+                class="code-panel"
+              ><code>public static MaterialPropertyBlock Clear(this MaterialPropertyBlock block, Name_ names)</code></pre>
+              <ul>
+                <li>
+                  <code>Name_</code> 是一个枚举,
+                  用来指定你想清除的属性(Color/Texture/Float/Vector/Matrix)
+                </li>
+                <li>
+                  调用时，方法会删除所有你在
+                  <code>names</code> 中指定的那些属性，并返回一个新的
+                  <code>MaterialPropertyBlock</code> 实例。
+                </li>
+              </ul>
+
+              <hr />
+
+              <h2>4. UtilityExtension(通用工具)</h2>
+              <p>
+                包含序列导出、反射访问[internal]、枚举扩展、列表/数组转换、编辑器路径处理[internal]等方法：
+              </p>
+
+              <h3>导出 AnimationSequence</h3>
+              <pre
+                class="code-panel"
+              ><code >ExportAnimationSequence(this AnimationCommand[] settings): AnimationSequence</code>
+<code>ExportAnimationSequence(this List&lt;AnimationCommand&gt; settings): AnimationSequence</code>
+<code>ExportAnimationSequence(this AnimationCommandGroup animationCommandGroup): AnimationSequence</code></pre>
+
+              <h3>导出 IAnimationCommand</h3>
+              <pre
+                class="code-panel"
+              ><code>ExportAnimation(this AnimationCommand setting): IAnimationCommand</code></pre>
+
+              <h3>枚举扩展</h3>
+              <pre
+                class="code-panel"
+              ><code>HasMultipleFlags(this Enum @enum, bool allowZero = false): bool
+GetFlags&lt;T&gt;(this T enumValue) where T : Enum : IEnumerable&lt;T&gt;</code></pre>
+
+              <h3>反射获取实例 [internal]</h3>
+              <pre
+                class="code-panel"
+              ><code>GetObjectInstanceByReflection(string path, object obj): object</code></pre>
+
+              <h3>类型转换</h3>
+              <pre
+                class="code-panel"
+              ><code>ConvertListType(this IList, Type targetListType): object
+ConvertArrayType(this Array, Type targetArrayType): object</code></pre>
+
+              <h3>编辑器路径字符串处理(仅 UnityEditor [internal])</h3>
+              <pre
+                class="code-panel"
+              ><code>ReplaceLastArrayDataOccurrence(this string path): string
+EndsWithArrayDataIndex(this string path): bool
+GetLastArrayDataIndex(this string path): int
+ReplaceLastArrayDataIndex(this string path, int newIndex): string</code></pre>
+
+              <hr />
+
+              <h2>
+                5. AnimationCommand &amp; AnimationCommandGroup (可视化面板)
+              </h2>
+              <p>
+                <code>AnimationCommand</code> 表示一个动画命令，调用
+                <code>ExportAnimation()</code> 可以把它转换成一个
+                <code>IAnimationCommand</code> 实例。
+              </p>
+              <p>
+                <code>AnimationCommandGroup</code> 用来存放多条
+                <code>AnimationCommand</code>，并提供
+                <code>ExportAnimationSequence()</code> 方法，将它们导出为一个
+                <code>AnimationSequence</code>，方便播放。
+              </p>
+
+              <hr />
+
+              <h2>7. 枚举类型</h2>
+              <div class="table-wrapper">
+                <table>
+                  <tr>
+                    <th>枚举</th>
+                    <th>说明</th>
+                  </tr>
+                  <tr>
+                    <td><code>Ease</code></td>
+                    <td>
+                      Linear、Sine、Quad、Cubic、Quart、Quint、Expo、Circ、Back、Elastic、Bounce
+                      等多种缓动选项
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Base_AnimType</code></td>
+                    <td>None, PingPong, Increment</td>
+                  </tr>
+                  <tr>
+                    <td><code>ValueAnimType</code></td>
+                    <td>None, PingPong, Increment, Decrement</td>
+                  </tr>
+                  <tr>
+                    <td><code>Axis</code></td>
+                    <td>None, X, Y, Z(可按位组合)</td>
+                  </tr>
+                </table>
+              </div>
+
+              <hr />
+
+              <h2>8. IAnimationCommand 接口</h2>
+              <p>所有动画命令的接口。</p>
+              <h3>公共属性</h3>
+              <ul>
+                <li>
+                  <code>float Duration { get; }</code>：动画的持续时间（秒）。
+                </li>
+                <li><code>int Times { get; }</code>：动画的循环次数。</li>
+                <li>
+                  <code>float ReturnDuration { get; }</code
+                  >：动画的返回时长（主要供 <code>AdvancedShake</code> 使用）。
+                </li>
+                <li>
+                  <code>bool IsPlaying { get; }</code>：当前动画是否正在播放。
+                </li>
+                <li>
+                  <code>UnityEngine.Object TargetObject { get; }</code
+                  >：动画作用的目标对象。
+                </li>
+              </ul>
+              <h3>公共方法</h3>
+              <pre class="code-panel"><code >bool IsPlaying { get; }
+// 开始播放动画，返回自身以便链式调用
+public IAnimationCommand Play();
+
+// 停止动画
+public IAnimationCommand Stop();
+
+// 重新开始播放（在 Stop 之后调用）
+public void Resume();
+
+// 动画完成时调用 onComplete 回调
+public IAnimationCommand AddOnComplete(Action action);
+
+// 移除已注册的回调
+public IAnimationCommand RemoveOnComplete(Action action);</code></pre>
+
+              <hr />
+
+              <h2>9. FunctionPlus(可视化面板)</h2>
+              <p>
+                提供通过可视化界面动态调用方法的功能，支持参数配置和协程方法的调用。
+              </p>
+              <h3>公共属性</h3>
+              <ul>
+                <li>
+                  <code>bool IsIEnumerator { get; }</code
+                  >：指示当前选中的方法是否为协程方法（返回类型为
+                  `IEnumerator`）。
+                </li>
+                <li>
+                  <code>bool IsMissing { get; }</code
+                  >：指示当前选中的方法是否已丢失（如方法被删除或重命名）。
+                </li>
+              </ul>
+              <h3>公共方法</h3>
+              <pre class="code-panel"><code>// 执行当前选中的方法。
+public void InvokeMethod()
+
+//获取当前方法的迭代器，用于协程调用(如 StartCoroutine)
+public IEnumerator GetIEnumerator()</code></pre>
+            </div>
+            <div class="it">
+              <h1>Documentazione API</h1>
+              <p><strong>namespace:</strong><code>AnimLink</code></p>
+              <hr />
+              <h2>1. AnimationSequence</h2>
+              <p>
+                Gestisce ed esegue in sequenza una serie di comandi di
+                animazione, ritardi e callback.
+              </p>
+              <h3>Proprietà pubbliche</h3>
+              <p>
+                <code>public List&lt;AnimationItem&gt; Items { get; }</code>:
+                lista degli elementi aggiunti.
+              </p>
+              <h3>Metodi pubblici</h3>
+              <pre
+                class="code-panel"
+              ><code>public AnimationSequence Append(IAnimationCommand command, bool wait = true) 
+public AnimationSequence Append(float delay, bool gameTime = true) 
+public AnimationSequence Append(Action action) 
+public AnimationSequence Append(FunctionPlus functionPlus, bool wait = false)
+
+public AnimationSequence Insert(int index, IAnimationCommand command, bool wait = true)
+public AnimationSequence Insert(int index, FunctionPlus functionPlus, bool wait = false)
+public AnimationSequence Insert(int index, float delay, bool gameTime = true)
+public AnimationSequence Insert(int index, Action action)
+
+public AnimationSequence RemoveAt(int index)
+public AnimationSequence Remove(IAnimationCommand command)
+public AnimationSequence Remove(FunctionPlus functionPlus)
+public AnimationSequence Remove(Action action)
+
+public AnimationSequence Clear()
+
+public void Play()
+public void Stop()
+</code></pre>
+
+              <p>
+                <strong>Note:</strong> Append/Insert aggiungono comandi;
+                Remove/RemoveAt/Clear li rimuovono; <code>Play()</code> avvia
+                l'animazione, <code>Stop()</code> la ferma.
+              </p>
+              <hr />
+              <h2>2. AnimLinkExtension (metodi di estensione)</h2>
+              <p>
+                Fornisce un'interfaccia animata a catena per i componenti
+                comuni, restituendo un'istanza di
+                <code>IAnimationCommand</code>, con supporto alla configurazione
+                a catena.
+              </p>
+              <div class="table-wrapper">
+                <table>
+                  <tr>
+                    <th>Metodo</th>
+                    <th>Firma del metodo</th>
+                    <th>Descrizione</th>
+                  </tr>
+                  <tr>
+                    <td>DoPath</td>
+                    <td>
+                      <pre><code>DoPath(this Transform t, Vector3[] path, float duration, int times, 
+      DoPath.AnimType animType, DoPath.PathType pathType, Ease ease, 
+      int samplesPerSegment=50)</code></pre>
+                    </td>
+                    <td>
+                      Sposta lungo un percorso, supporta Lineare / Catmull-Rom /
+                      Bézier.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DoPosition (Asse)</td>
+                    <td>
+                      <pre><code>DoPosition(this Transform t, Axis axis, float target, float duration, 
+          int times, DoPosition.AxisAnimType animType, Ease ease = Ease.Linear, 
+          Space space = Space.World)</code></pre>
+                    </td>
+                    <td>Sposta lungo un asse specifico.</td>
+                  </tr>
+                  <tr>
+                    <td>DoPosition (Vettore)</td>
+                    <td>
+                      <pre><code>DoPosition(this Transform t, Vector3 position, float duration, 
+          int times, Base_AnimType animType, Ease ease = Ease.Linear, 
+          Space space = Space.World)</code></pre>
+                    </td>
+                    <td>Sposta verso una posizione specifica.</td>
+                  </tr>
+                  <tr>
+                    <td>DoScale (Asse)</td>
+                    <td>
+                      <pre><code>DoScale(this Transform transform, Axis axis, float target, float duration, 
+        int times, Base_AnimType animType, Ease ease = Ease.Linear)</code></pre>
+                    </td>
+                    <td>Scala lungo l'asse specificato.</td>
+                  </tr>
+                  <tr>
+                    <td>DoScale (Vettore)</td>
+                    <td>
+                      <pre><code>DoScale(this Transform transform, Vector3 localScale, float duration, 
+        int times, Base_AnimType animType, Ease ease = Ease.Linear)</code></pre>
+                    </td>
+                    <td>Scala secondo il vettore 3D specificato.</td>
+                  </tr>
+
+                  <tr>
+                    <td>DoRotation</td>
+                    <td>
+                      <pre><code>DoRotation(this Transform t, Vector3 eulerAngles, float duration, int times,
+           Base_AnimType animType, Ease ease = Ease.Linear,
+           DoRotation.RotateMode rotateMode = RotateMode.Fast,
+           Space space = Space.World)</code></pre>
+                    </td>
+                    <td>Animazione di rotazione.</td>
+                  </tr>
+                  <tr>
+                    <td>DoAlpha</td>
+                    <td>
+                      <pre><code>DoAlpha(this SpriteRenderer / CanvasGroup / Graphic / Material / MeshRenderer target,
+        float alpha, float duration, int times, ValueAnimType animType,
+        Ease ease = Ease.Linear[, int materialIndex])</code></pre>
+                    </td>
+                    <td>Animazione di trasparenza.</td>
+                  </tr>
+                  <tr>
+                    <td>DoColor</td>
+                    <td>
+                      <pre><code>DoColor(this SpriteRenderer/Graphic/Material/MeshRenderer target,
+        Color color, float duration, int times, ValueAnimType animType,
+        Ease ease = Ease.Linear, bool doAlpha = false[, int materialIndex])</code></pre>
+                    </td>
+                    <td>Animazione di colore.</td>
+                  </tr>
+                  <tr>
+                    <td>ShakePosition / ShakeScale</td>
+                    <td>
+                      <pre><code>ShakePosition(this Transform t, Axis axis, float duration, float magnitude)</code></pre>
+                    </td>
+                    <td>Animazione a scossa (posizione / scala).</td>
+                  </tr>
+                  <tr>
+                    <td>AdvancedShake</td>
+                    <td>
+                      <pre><code>AdvancedShake(this Transform t, float duration, Axis axes, float returnDuration,
+              AdvancedShake.AdvancedShakeType type)</code></pre>
+                    </td>
+                    <td>Scossa avanzata, supporta rumore e curve.</td>
+                  </tr>
+                  <tr>
+                    <td>EasedT</td>
+                    <td><code>float EasedT(float t, Ease ease)</code></td>
+                    <td>Calcola il progresso in base al tipo di easing.</td>
+                  </tr>
+                  <tr>
+                    <td>CatmullRom / CubicBezier</td>
+                    <td>
+                      <pre><code
+                        >Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+Vector3 CubicBezier(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)</code
+                      ></pre>
+                    </td>
+                    <td>Algoritmi di interpolazione del percorso.</td>
+                  </tr>
+                </table>
+              </div>
+              <hr />
+              <h2>3. MaterialPropertyBlockExtension</h2>
+              <p>
+                Estende <code>MaterialPropertyBlock</code> per supportare la
+                cancellazione in blocco delle proprietà:
+              </p>
+              <pre
+                class="code-panel"
+              ><code> public static MaterialPropertyBlock Clear(this MaterialPropertyBlock block, Name_ names) </code></pre>
+              <ul>
+                <li>
+                  <code>Name_</code> è una enum che specifica quali proprietà
+                  (Color/Texture/Float/Vector/Matrix) cancellare.
+                </li>
+                <li>
+                  Il metodo rimuove tutte le proprietà specificate in
+                  <code>names</code> e restituisce una nuova istanza di
+                  <code>MaterialPropertyBlock</code>.
+                </li>
+              </ul>
+              <hr />
+              <h2>4. UtilityExtension (Utilità generiche)</h2>
+              <p>
+                Contiene metodi per esportare sequenze, accesso riflessivo
+                [internal], estensioni enum, conversioni lista/array,
+                elaborazione di path editor [internal]:
+              </p>
+              <h3>Esportare AnimationSequence</h3>
+              <pre
+                class="code-panel"
+              ><code>ExportAnimationSequence(this AnimationCommand[] settings): AnimationSequence
+ExportAnimationSequence(this List&lt;AnimationCommand&gt; settings): AnimationSequence
+ExportAnimationSequence(this AnimationCommandGroup animationCommandGroup): AnimationSequence</code></pre>
+              <h3>Esportare IAnimationCommand</h3>
+              <pre
+                class="code-panel"
+              ><code>ExportAnimation(this AnimationCommand setting): IAnimationCommand</code></pre>
+              <h3>Estensioni Enum</h3>
+              <pre
+                class="code-panel"
+              ><code>HasMultipleFlags(this Enum @enum, bool allowZero = false): bool 
+GetFlags&lt;T&gt;(this T enumValue) where T : Enum : IEnumerable&lt;T&gt; </code></pre>
+              <h3>Ottenere l'istanza tramite riflessione [internal]</h3>
+              <pre
+                class="code-panel"
+              ><code>GetObjectInstanceByReflection(string path, object obj): object</code></pre>
+              <h3>Conversioni di tipo</h3>
+              <pre
+                class="code-panel"
+              ><code>ConvertListType(this IList, Type targetListType): object 
+ConvertArrayType(this Array, Type targetArrayType): object</code></pre>
+              <h3>
+                Gestione stringhe di percorso in Editor (solo UnityEditor
+                [internal])
+              </h3>
+              <pre
+                class="code-panel"
+              ><code>ReplaceLastArrayDataOccurrence(this string path): string 
+EndsWithArrayDataIndex(this string path): bool 
+GetLastArrayDataIndex(this string path): int 
+ReplaceLastArrayDataIndex(this string path, int newIndex): string</code></pre>
+              <hr />
+              <h2>
+                5. AnimationCommand & AnimationCommandGroup (Pannello visivo)
+              </h2>
+              <p>
+                <code>AnimationCommand</code> rappresenta un comando di
+                animazione. È possibile convertirlo in un'istanza
+                <code>IAnimationCommand</code> tramite
+                <code>ExportAnimation()</code>.
+              </p>
+              <p>
+                <code>AnimationCommandGroup</code> contiene più
+                <code>AnimationCommand</code> e fornisce il metodo
+                <code>ExportAnimationSequence()</code> per esportarli come una
+                <code>AnimationSequence</code> da riprodurre.
+              </p>
+              <hr />
+              <h2>7. Tipi Enum</h2>
+              <div class="table-wrapper">
+                <table>
+                  <tr>
+                    <th>Enum</th>
+                    <th>Descrizione</th>
+                  </tr>
+                  <tr>
+                    <td><code>Ease</code></td>
+                    <td>
+                      Opzioni di easing come Linear, Sine, Quad, Cubic, Quart,
+                      Quint, Expo, Circ, Back, Elastic, Bounce, ecc.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><code>Base_AnimType</code></td>
+                    <td>None, PingPong, Increment</td>
+                  </tr>
+                  <tr>
+                    <td><code>ValueAnimType</code></td>
+                    <td>None, PingPong, Increment, Decrement</td>
+                  </tr>
+                  <tr>
+                    <td><code>Axis</code></td>
+                    <td>None, X, Y, Z (combinabili con flag)</td>
+                  </tr>
+                </table>
+              </div>
+              <hr />
+              <h2>8. Interfaccia IAnimationCommand</h2>
+              <p>Interfaccia per tutti i comandi di animazione.</p>
+              <h3>Proprietà pubbliche</h3>
+              <ul>
+                <li>
+                  <code>float Duration { get; }</code>: durata dell'animazione
+                  (secondi).
+                </li>
+                <li>
+                  <code>int Times { get; }</code>: numero di ripetizioni
+                  dell'animazione.
+                </li>
+                <li>
+                  <code>float ReturnDuration { get; }</code>: durata di ritorno
+                  (usata principalmente da <code>AdvancedShake</code>).
+                </li>
+                <li>
+                  <code>bool IsPlaying { get; }</code>: indica se l'animazione è
+                  attualmente in esecuzione.
+                </li>
+                <li>
+                  <code>UnityEngine.Object TargetObject { get; }</code>: oggetto
+                  target dell'animazione.
+                </li>
+              </ul>
+              <h3>Metodi pubblici</h3>
+              <pre
+                class="code-panel"
+              ><code>// Avvia l'animazione e restituisce se stesso per chaining 
+public IAnimationCommand Play();
+// Ferma l'animazione
+public IAnimationCommand Stop();
+
+// Riprende l'animazione (dopo uno Stop)
+public void Resume();
+
+// Registra un callback da eseguire al termine
+public IAnimationCommand AddOnComplete(Action action);
+
+// Rimuove un callback precedentemente registrato
+public IAnimationCommand RemoveOnComplete(Action action);
+</code></pre>
+
+              <hr />
+
+              <h2>9. FunctionPlus (Pannello Visivo)</h2>
+              <p>
+                Fornisce la funzionalità per invocare metodi dinamicamente
+                tramite un'interfaccia visiva, supportando la configurazione dei
+                parametri e l'invocazione di metodi coroutine.
+              </p>
+              <h3>Proprietà Pubbliche</h3>
+              <ul>
+                <li>
+                  <code>bool IsIEnumerator { get; }</code>: Indica se il metodo
+                  selezionato è una coroutine (cioè restituisce
+                  <code>IEnumerator</code>).
+                </li>
+                <li>
+                  <code>bool IsMissing { get; }</code>: Indica se il metodo
+                  selezionato è mancante (ad esempio, se è stato eliminato o
+                  rinominato).
+                </li>
+              </ul>
+              <h3>Metodi Pubblici</h3>
+              <pre
+                class="code-panel"
+              ><code>// Esegue il metodo attualmente selezionato.
+public void InvokeMethod()
+
+// Ottiene l'iteratore del metodo corrente, utile per le coroutine (es. StartCoroutine)
+public IEnumerator GetIEnumerator()</code></pre>
+            </div>
+            <hr />
+          </section>
+          <section id="page-not-found">
+            <p>404</p>
+            <p class="zh-CN">页面未找到</p>
+            <p class="it">Pagina non trovata</p>
+            <span class="zh-CN"><a href="#intro">→返回简介</a></span>
+            <span class="it"><a href="#intro">→Torna all'introduzione</a></span>
+          </section>
+        </article>
+      </main>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
